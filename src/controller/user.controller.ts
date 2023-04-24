@@ -8,7 +8,6 @@ export default class ProductsController {
   async createUser(req: Request, res: Response): Promise<void> {
     const info = req.body;
     const newUser = await this.userService.createUser(info);
-    console.log(newUser);
     if (newUser) {
       const token = generateToken(info.username, Number(newUser.id));
       res.status(201).json({ token });
